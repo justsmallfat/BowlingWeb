@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+		name="jdbc/bowlingWebWebProject" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/bowling"
+		username="root" password="19881216"
+		useUnicode="true"
+		characterEncoding="utf-8"
+		maxActive="50" maxIdle="30" maxWait="60000"
+		validationQuery="select 'Y'"
+		validationQueryTimeout="5"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		logAbandoned="true"
+		testOnBorrow="true"
+		testWhileIdle="true"
+		timeBetweenEvictionRunsMillis="10000"
+		/>
+
+</Context>

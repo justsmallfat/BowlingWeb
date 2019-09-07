@@ -1,0 +1,49 @@
+body {
+	overflow-x: hidden;
+	background-image: url(../image/bg.png);
+}
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.page {
+	width: 100vw;
+	max-width: 960px;
+	margin: 0 auto;
+	background-color: white;
+}
+
+#navbar {
+	width: 100%;
+	background-color: #280D44;
+	border: 0px;
+}
+
+#navbar a {
+	font-size: 28px;
+	background-color: #280D44;
+	color: #FFFFFF;
+}
+
+#navbar .open a:FOCUS {
+	background-color: #280D44;
+}
+
+#navbar .dropdown-menu {
+	background-color: #280D44;
+}
+
+.affix {
+	top: 0;
+}
+
+.affix+.container-fluid {
+	padding-top: 70px;
+}
+
+.pageFoot{
+	margin: 0 auto;
+	text-align: center;
+}
