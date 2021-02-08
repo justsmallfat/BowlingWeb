@@ -14,8 +14,9 @@ public class Season implements Serializable{
 	
 	@Id
 	@Column(name="seasonID")
-	private int seasonID;
+	private long seasonID;
 
+	@Id
 	@Column(name="teamID")
 	private String teamID;
 	
@@ -31,7 +32,7 @@ public class Season implements Serializable{
 	@Column(name="notes")
 	private String notes;
 
-	public int getSeasonID() {
+	public long getSeasonID() {
 		return seasonID;
 	}
 

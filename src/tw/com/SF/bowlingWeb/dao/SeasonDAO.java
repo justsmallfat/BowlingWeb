@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import tw.com.SF.bowlingWeb.bean.AchievementsType;
+import tw.com.SF.bowlingWeb.bean.Game;
 import tw.com.SF.bowlingWeb.bean.Season;
 
 @Repository
@@ -22,6 +23,12 @@ public class SeasonDAO extends AbstractDAO<Season> {
 		Criteria criteria = createCriteria();
 		criteria.add(Restrictions.eq("teamID", teamId));	
 		return criteria.list();		
+	}
+
+	public Season getSeasonByTeamID(long seasonID, String teamId) throws Exception {				
+		Criteria criteria = createCriteria();
+		criteria.add(Restrictions.eq("teamID", teamId)).add(Restrictions.eq("seasonID", seasonID));	
+		return (Season) criteria.list().get(0);		
 	}
 	
 }

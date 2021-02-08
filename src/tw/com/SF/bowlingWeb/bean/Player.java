@@ -29,7 +29,7 @@ public class Player implements Serializable{
 
 	@Id
 	@Column(name="seasonID")
-	private int seasonID;
+	private long seasonID;
 	
 	
 	@Column(name="Score_Highest")
@@ -127,11 +127,11 @@ public class Player implements Serializable{
 	}
 	
 
-	public int getSeasonID() {
+	public long getSeasonID() {
 		return seasonID;
 	}
 
-	public void setSeasonID(int seasonID) {
+	public void setSeasonID(long seasonID) {
 		this.seasonID = seasonID;
 	}
 

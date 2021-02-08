@@ -15,7 +15,7 @@ import tw.com.SF.bowlingWeb.bean.Player;
 @Repository
 public class PlayerDAO extends AbstractDAO<Player> {
 	
-	public Player getPlayerByIdAndTeam(String playerId,String teamId,int seasonID) throws Exception {				
+	public Player getPlayerByIdAndTeam(String playerId,String teamId,long seasonID) throws Exception {				
 		Criteria criteria = createCriteria();
 		criteria.add(Restrictions.eq("playerId", playerId));
 		criteria.add(Restrictions.eq("teamID", teamId));	
@@ -29,11 +29,11 @@ public class PlayerDAO extends AbstractDAO<Player> {
 		return player;		
 	}
 	
-	public Player getOrCreatSeasonPlayerByIdAndTeam(String playerId,String teamId,int seasonID) throws Exception {				
+	public Player getOrCreatSeasonPlayerByIdAndTeam(String playerId,String teamId,long tempSeasonID) throws Exception {				
 		Criteria criteria = createCriteria();
 		criteria.add(Restrictions.eq("playerId", playerId));
 		criteria.add(Restrictions.eq("teamID", teamId));	
-		criteria.add(Restrictions.eq("seasonID", seasonID));	
+		criteria.add(Restrictions.eq("seasonID", tempSeasonID));	
 		Player player = null;
 		if(criteria.list().size()>0){
 			player = (Player) criteria.list().get(0); 
@@ -45,7 +45,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
 			player.setPlayerId(playerLife.getPlayerId());
 			player.setPlayerName(playerLife.getPlayerName());
 			player.setTeamID(playerLife.getTeamID());
-			player.setSeasonID(seasonID);
+			player.setSeasonID(tempSeasonID);
 		}
 		return player;		
 	}
@@ -93,7 +93,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
 		return criteria.list();		
 	}
 	
-	public Player getTeamSeasonData(String teamId, String playerId, int seasonId) throws Exception {				
+	public Player getTeamSeasonData(String teamId, String playerId, long seasonId) throws Exception {				
 		Criteria criteria = createCriteria();
 		criteria.add(Restrictions.eq("teamID", teamId));
 		criteria.add(Restrictions.eq("playerId", playerId));

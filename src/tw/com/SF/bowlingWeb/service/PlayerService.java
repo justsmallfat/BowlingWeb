@@ -30,7 +30,7 @@ public class PlayerService  extends AbstractService{
 		return  player;
 	}
 	
-	public Player getSeasonPlayerByPlayerId(String playerId, String teamId, int seasonId) throws Exception {
+	public Player getSeasonPlayerByPlayerId(String playerId, String teamId, long seasonId) throws Exception {
 		refreshPlaySeasonData(playerId,teamId, seasonId);
 		Player player = (Player) playerDAO.getPlayerByIdAndTeam(playerId, teamId, seasonId);
 		return  player;
@@ -70,16 +70,15 @@ public class PlayerService  extends AbstractService{
 		
 	}
 	
-	public void refreshTeamAllPlayerSeasonData(String teamId, int seasonId) throws Exception {
+	public void refreshTeamAllPlayerSeasonData(String teamId, long seasonId) throws Exception {
 		List<Player> players = playerDAO.getTeamPlayer(teamId);
 		for(Player player:players){
 			refreshPlaySeasonData(player.getPlayerId(), teamId, seasonId);
 		}
 	}
 	
-	public void refreshPlaySeasonData(String playerId, String teamId, int seasonId) throws Exception {
-
-		Season season = seasonDAO.get(seasonId);
+	public void refreshPlaySeasonData(String playerId, String teamId, long seasonId) throws Exception {
+		Season season = seasonDAO.getSeasonByTeamID(seasonId, teamId);
 		Player player = playerDAO.getOrCreatSeasonPlayerByIdAndTeam(playerId, teamId, seasonId);
 		Player refreshPlayer = refreshPlayDuringData(player, season.getSeasonStartDate(), season.getSeasonEndDate());
 		

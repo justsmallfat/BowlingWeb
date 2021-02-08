@@ -77,7 +77,7 @@ public class PlayerAPI extends AbstractController{
 				String teamId =  req.getParameter("teamId");
 				String seasonId =  req.getParameter("seasonId");
 				logger.info("Id : "+Id);
-				player =  playerService.getSeasonPlayerByPlayerId(Id, teamId, Integer.parseInt(seasonId));
+				player =  playerService.getSeasonPlayerByPlayerId(Id, teamId, (long)Integer.parseInt(seasonId));
 
 				jsonMap.put("success", "true");
 				jsonMap.put("errmsg", message);
