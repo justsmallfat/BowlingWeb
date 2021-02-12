@@ -24,8 +24,8 @@ public class GameService extends AbstractService{
 	@Resource private PlayerDAO playerDAO;
 	@Resource private SeasonDAO seasonDAO;
 	
-	public List<Game> getPlayerGamesByIdAndSeason(String playerId,String teamId,int seasonId) throws Exception {
-		Season season = seasonDAO.get(seasonId);
+	public List<Game> getPlayerGamesByIdAndSeason(String playerId,String teamId,long seasonId) throws Exception {
+		Season season = seasonDAO.getSeasonByTeamID(seasonId, teamId);
 		logger.info("season : "+season);
 		
 		return  gameDAO.getGamesByPlayerAndDate(playerId, teamId, season.getSeasonStartDate(), season.getSeasonEndDate());
