@@ -61,7 +61,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
 		return getPlayerByOrder(order, orderType, teamId, 0);		
 	}
 	
-	public List getPlayerByOrder(String order,int orderType, String teamId, int seasonId) throws Exception {				
+	public List getPlayerByOrder(String order,int orderType, String teamId, long seasonId) throws Exception {				
 		Criteria criteria = createCriteria();
 		if(orderType>0){
 			criteria.addOrder(Order.desc(order));
@@ -71,7 +71,7 @@ public class PlayerDAO extends AbstractDAO<Player> {
 		criteria.add(Restrictions.eq("teamID", teamId));
 		criteria.add(Restrictions.eq("seasonID", seasonId));
 		
-		logger.info("dao : "+criteria.list().size());		
+//		logger.info("dao : "+criteria.list().size());		
 		return criteria.list();		
 	}
 	
@@ -87,9 +87,9 @@ public class PlayerDAO extends AbstractDAO<Player> {
 	public List getTeamPlayer(String teamId) throws Exception {				
 		Criteria criteria = createCriteria();
 		criteria.add(Restrictions.eq("teamID", teamId));
-		criteria.add(Restrictions.eq("seasonID", 0));
+		criteria.add(Restrictions.eq("seasonID", 0L));
 		criteria.addOrder(Order.desc("gamesCount"));
-		logger.info("dao : "+criteria.list().size());		
+//		logger.info("dao : "+criteria.list().size());		
 		return criteria.list();		
 	}
 	

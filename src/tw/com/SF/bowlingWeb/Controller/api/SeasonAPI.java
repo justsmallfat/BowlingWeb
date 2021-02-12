@@ -74,7 +74,6 @@ public class SeasonAPI extends AbstractController{
 			if(	StringUtils.hasText(req.getParameter("teamId"))) {
 				String teamId = req.getParameter("teamId");
 				logger.info("teamId : "+teamId);
-
 				datas = seasonService.getTeamSeasonData(teamId);
 				jsonMap.put("success", "true");
 				jsonMap.put("errmsg", "");

@@ -111,9 +111,7 @@ public class PlayerAPI extends AbstractController{
 		List players =  null;
 		try	{
 			String Id = req.getParameter("playerId");
-			logger.info("Id : "+Id);
 			players =  playerService.getAllPlayer();
-			logger.info("player : "+players);
 
 			jsonMap.put("success", "true");
 			jsonMap.put("errmsg", message);
@@ -141,9 +139,7 @@ public class PlayerAPI extends AbstractController{
 		try	{
 			if(StringUtils.hasText(req.getParameter("teamId"))) {
 				String teamId = req.getParameter("teamId");
-				logger.info("teamId : "+teamId);
 				players =  playerService.getTeamPlayer(teamId);
-				logger.info("player : "+players);
 
 				jsonMap.put("success", "true");
 				jsonMap.put("errmsg", message);
@@ -210,35 +206,35 @@ public class PlayerAPI extends AbstractController{
 		}
 	}
 	
-	@RequestMapping("/refreshAllPlayer")
-	public @ResponseBody Map<String, Object> refreshAllPlayerData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		logger.info("APP Login GetPlayerController start()");
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		String message = null;
-		List<Player> players =  null;
-		try	{
-			players =  playerService.getAllPlayer();
-			for(Player player:players){
-				String playerId = player.getPlayerId();
-				String teamId = player.getTeamID();
-				playerService.refreshPlayLifeData(playerId,teamId);
-			}
-
-			jsonMap.put("success", "true");
-			jsonMap.put("errmsg", message);
-			jsonMap.put("players",players);
-			
-			return jsonMap;
-		}
-		catch(Exception e){
-			logger.error("AuthenticateController Exception", e);
-			e.printStackTrace();
-			message = "未知的錯誤 : \n"+getExceptionMessage(e);
-			jsonMap.put("success", "false");
-			jsonMap.put("errmsg", message);
-			jsonMap.put("player",players);
-			return jsonMap;
-		}
-	}
+//	@RequestMapping("/refreshAllPlayer")
+//	public @ResponseBody Map<String, Object> refreshAllPlayerData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+//		logger.info("APP Login GetPlayerController start()");
+//		Map<String, Object> jsonMap = new HashMap<String, Object>();
+//		String message = null;
+//		List<Player> players =  null;
+//		try	{
+//			players =  playerService.getAllPlayer();
+//			for(Player player:players){
+//				String playerId = player.getPlayerId();
+//				String teamId = player.getTeamID();
+//				playerService.refreshPlayLifeData(playerId,teamId);
+//			}
+//
+//			jsonMap.put("success", "true");
+//			jsonMap.put("errmsg", message);
+//			jsonMap.put("players",players);
+//			
+//			return jsonMap;
+//		}
+//		catch(Exception e){
+//			logger.error("AuthenticateController Exception", e);
+//			e.printStackTrace();
+//			message = "未知的錯誤 : \n"+getExceptionMessage(e);
+//			jsonMap.put("success", "false");
+//			jsonMap.put("errmsg", message);
+//			jsonMap.put("player",players);
+//			return jsonMap;
+//		}
+//	}
 	
 }

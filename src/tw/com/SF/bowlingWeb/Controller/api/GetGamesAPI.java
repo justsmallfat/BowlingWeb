@@ -177,7 +177,7 @@ public class GetGamesAPI extends AbstractController{
 					StringUtils.hasText(req.getParameter("teamId")) ) {
 				String seasonId = req.getParameter("seasonId");
 				String teamId = req.getParameter("teamId");
-				games =  gameService.getTeamAllGamesForChart(Integer.parseInt(seasonId), teamId);
+				games =  gameService.getTeamAllGamesForChart(Long.parseLong(seasonId, 10), teamId);
 				logger.info("games : "+games);
 
 				jsonMap.put("success", "true");

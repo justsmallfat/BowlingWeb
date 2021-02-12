@@ -21,7 +21,7 @@ public class SeasonDAO extends AbstractDAO<Season> {
 	
 	public List getTeamSeasons(String teamId) throws Exception {				
 		Criteria criteria = createCriteria();
-		criteria.add(Restrictions.eq("teamID", teamId));	
+		criteria.add(Restrictions.eq("teamID", teamId)).addOrder(Order.desc("seasonID"));	
 		return criteria.list();		
 	}
 

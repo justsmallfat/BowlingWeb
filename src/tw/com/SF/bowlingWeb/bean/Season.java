@@ -32,11 +32,15 @@ public class Season implements Serializable{
 	@Column(name="notes")
 	private String notes;
 
+
+	@Column(name="Update_Date")
+	private String updateDate;
+
 	public long getSeasonID() {
 		return seasonID;
 	}
 
-	public void setSeasonID(int seasonID) {
+	public void setSeasonID(long seasonID) {
 		this.seasonID = seasonID;
 	}
 
@@ -78,6 +82,15 @@ public class Season implements Serializable{
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+	
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	@Override

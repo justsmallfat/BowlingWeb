@@ -35,8 +35,8 @@ public class GameService extends AbstractService{
 		return  gameDAO.getTeamGamesByByDates(startDate, endDate, teamId);
 	}
 	
-	public List<Map<String, Object>> getTeamAllGamesForChart(int seasonId, String teamId) throws Exception {
-		Season season = seasonDAO.get(seasonId);
+	public List<Map<String, Object>> getTeamAllGamesForChart(long seasonId, String teamId) throws Exception {
+		Season season = seasonDAO.getSeasonByTeamID(seasonId, teamId);
 		List<Map<String, Object>> data = new ArrayList<>();
 		List<Player> teamPlayers = playerDAO.getTeamPlayer(teamId);
 		logger.info("teamPlayers : "+teamPlayers.size());

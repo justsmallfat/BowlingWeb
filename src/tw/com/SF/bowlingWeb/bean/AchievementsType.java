@@ -12,8 +12,7 @@ public class AchievementsType implements Serializable{
 	
 	@Id
 	@Column(name="achievementsType_ID")
-	private int achievementsTypeId;
-	
+	private long achievementsTypeId;
 	
 	@Column(name="Achievements_ID")
 	private String achievementsID;
@@ -27,12 +26,13 @@ public class AchievementsType implements Serializable{
 
 	@Column(name="orderType")
 	private int orderType;
+	
 
-	public int getAchievementsTypeId() {
+	public long getAchievementsTypeId() {
 		return achievementsTypeId;
 	}
 
-	public void setAchievementsTypeId(int achievementsTypeId) {
+	public void setAchievementsTypeId(long achievementsTypeId) {
 		this.achievementsTypeId = achievementsTypeId;
 	}
 

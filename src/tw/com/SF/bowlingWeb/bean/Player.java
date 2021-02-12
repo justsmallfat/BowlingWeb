@@ -99,6 +99,28 @@ public class Player implements Serializable{
 	
 	@Column(name="gamesCount")
 	private int gamesCount;
+
+	@Column(name="turkeyCount")
+	private int turkeyCount;
+
+	@Column(name="turkeyCountAve")
+	private String turkeyCountAve;
+	
+	@Column(name="seaTurkeyCount")
+	private int seaTurkeyCount;
+
+	@Column(name="unluckyCountAve")
+	private String unluckyCountAve;
+
+	@Column(name="firstStrikeBoxNum")
+	private String firstStrikeBoxNum;
+
+	@Column(name="maxStrikeCount")
+	private int maxStrikeCount;
+
+
+	@Column(name="Update_Date")
+	private String updateDate;
 	
 
 	public String getPlayerId() {
@@ -310,8 +332,6 @@ public class Player implements Serializable{
 	public void setEveryGames(String everyGames) {
 		this.everyGames = everyGames;
 	}
-	
-	
 
 	public int getGamesCount() {
 		return gamesCount;
@@ -319,6 +339,64 @@ public class Player implements Serializable{
 
 	public void setGamesCount(int gamesCount) {
 		this.gamesCount = gamesCount;
+	}
+	
+
+	public int getTurkeyCount() {
+		return turkeyCount;
+	}
+
+	public void setTurkeyCount(int turkeyCount) {
+		this.turkeyCount = turkeyCount;
+	}
+
+	public String getTurkeyCountAve() {
+		return turkeyCountAve;
+	}
+
+	public void setTurkeyCountAve(String turkeyCountAve) {
+		this.turkeyCountAve = turkeyCountAve;
+	}
+
+	public int getSeaTurkeyCount() {
+		return seaTurkeyCount;
+	}
+
+	public void setSeaTurkeyCount(int seaTurkeyCount) {
+		this.seaTurkeyCount = seaTurkeyCount;
+	}
+
+	public String getUnluckyCountAve() {
+		return unluckyCountAve;
+	}
+
+	public void setUnluckyCountAve(String unluckyCountAve) {
+		this.unluckyCountAve = unluckyCountAve;
+	}
+
+	public String getFirstStrikeBoxNum() {
+		return firstStrikeBoxNum;
+	}
+
+	public void setFirstStrikeBoxNum(String firstStrikeBoxNum) {
+		this.firstStrikeBoxNum = firstStrikeBoxNum;
+	}
+
+	public int getMaxStrikeCount() {
+		return maxStrikeCount;
+	}
+
+	public void setMaxStrikeCount(int maxStrikeCount) {
+		this.maxStrikeCount = maxStrikeCount;
+	}
+	
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	@Override
@@ -330,7 +408,10 @@ public class Player implements Serializable{
 				+ ", strike_Ave=" + strike_Ave + ", spare_Ave=" + spare_Ave + ", box_1_Ave=" + box_1_Ave
 				+ ", box_2_Ave=" + box_2_Ave + ", box_3_Ave=" + box_3_Ave + ", box_4_Ave=" + box_4_Ave + ", box_5_Ave="
 				+ box_5_Ave + ", box_6_Ave=" + box_6_Ave + ", box_7_Ave=" + box_7_Ave + ", box_8_Ave=" + box_8_Ave
-				+ ", box_9_Ave=" + box_9_Ave + ", box_10_Ave=" + box_10_Ave + ", everyGames=" + everyGames + "]";
+				+ ", box_9_Ave=" + box_9_Ave + ", box_10_Ave=" + box_10_Ave + ", everyGames=" + everyGames
+				+ ", gamesCount=" + gamesCount + ", turkeyCount=" + turkeyCount + ", turkeyCountAve=" + turkeyCountAve
+				+ ", seaTurkeyCount=" + seaTurkeyCount + ", unluckyCountAve=" + unluckyCountAve + ", firstStrikeBoxNum="
+				+ firstStrikeBoxNum + ", maxStrikeCount=" + maxStrikeCount + ", updateDate=" + updateDate + "]";
 	}
 
 	

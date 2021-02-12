@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -41,6 +42,7 @@ public class GameDAO extends AbstractDAO<Game> {
 		if(StringUtils.hasText(startDate) && StringUtils.hasText(endDate)){
 			criteria.add(Restrictions.between("creatDate", startDate, endDate));
 		}
+		criteria.addOrder(Order.asc("creatDate"));
 		return criteria.list();
 		
 	}
