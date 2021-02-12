@@ -53,7 +53,7 @@ public class PlayerService  extends AbstractService{
 		List<Player> players = playerDAO.getTeamPlayer(teamId);
 		List<Player> refreshPlayers = new ArrayList();
 		for(Player player:players){
-			Player rp = refreshPlayDuringData(player, startDate, endDate);
+			Player rp = refreshPlayDuringData(player, startDate, endDate, false);
 			if(rp!=null){
 				refreshPlayers.add(rp);
 			}
@@ -82,13 +82,13 @@ public class PlayerService  extends AbstractService{
 	private void refreshPlaySeasonData(String playerId, String teamId, long seasonId) throws Exception {
 		Season season = seasonDAO.getSeasonByTeamID(seasonId, teamId);
 		Player player = playerDAO.getOrCreatSeasonPlayerByIdAndTeam(playerId, teamId, seasonId);
-		Player refreshPlayer = refreshPlayDuringData(player, season.getSeasonStartDate(), season.getSeasonEndDate());
+		Player refreshPlayer = refreshPlayDuringData(player, season.getSeasonStartDate(), season.getSeasonEndDate(), true);
 		if(refreshPlayer!=null){
 			playerDAO.setPlayer(refreshPlayer);
 		}
 	}
 	
-	private Player refreshPlayDuringData(Player player, String startDate, String endDate) throws Exception {
+	private Player refreshPlayDuringData(Player player, String startDate, String endDate, boolean unReset) throws Exception {
 		
 		if(!teamDAO.alivePlayer(player.getPlayerId(), player.getTeamID())){
 			return null;
@@ -98,7 +98,7 @@ public class PlayerService  extends AbstractService{
 		int gamesCount = games.size();
 		int tempCount = player.getGamesCount();
 		
-		if(gamesCount !=0){
+		if(gamesCount !=0 && unReset){
 			Game lastGame = games.get(games.size()-1);
 			Date lastGameCT = sdf.parse(lastGame.getCreatDate());
 			Date lastplayerUT = sdf.parse(player.getUpdateDate());
