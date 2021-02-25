@@ -30,7 +30,6 @@ public class SetGamesAPI extends AbstractController{
     
 	@RequestMapping("/addgame")
 	public @ResponseBody Map<String, Object> list(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		logger.info("APP Login SetPlayerController start()");
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String message = null;

@@ -120,6 +120,7 @@ public class GameService extends AbstractService{
 		String teamId = game.getTeamID();
 		Player player = playerDAO.getPlayerByIdAndTeam(playerId, teamId, 0);
 		game.setPlayerName(player.getPlayerName());
+		logger.info("add games : "+game.toString());
 
 		gameDAO.setGames(game);
 	}

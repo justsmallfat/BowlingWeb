@@ -255,8 +255,13 @@ public class Game implements Serializable{
 	public void setTeamID(String teamID) {
 		this.teamID = teamID;
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Game [gameId=" + gameId + ", teamID=" + teamID + ", gameName=" + gameName + ", playerId=" + playerId
+				+ ", playerName=" + playerName + ", box1=" + box1 + ", box2=" + box2 + ", box3=" + box3 + ", box4="
+				+ box4 + ", box5=" + box5 + ", box6=" + box6 + ", box7=" + box7 + ", box8=" + box8 + ", box9=" + box9
+				+ ", box10=" + box10 + ", score=" + score + ", rank=" + rank + ", creatDate=" + creatDate
+				+ ", updateDate=" + updateDate + ", money=" + money + "]";
+	}
 }
