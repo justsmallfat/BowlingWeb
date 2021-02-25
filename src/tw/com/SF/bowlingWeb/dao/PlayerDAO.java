@@ -83,6 +83,14 @@ public class PlayerDAO extends AbstractDAO<Player> {
 		logger.info("dao : "+criteria.list().size());		
 		return criteria.list();		
 	}
+
+	public List getSeasonTeamPlayers(String teamId, long seasonId) throws Exception {				
+		Criteria criteria = createCriteria();
+		criteria.add(Restrictions.eq("teamID", teamId));
+		criteria.add(Restrictions.eq("seasonID", seasonId));
+		criteria.addOrder(Order.desc("gamesCount"));
+		return criteria.list();		
+	}
 	
 	public List getTeamPlayer(String teamId) throws Exception {				
 		Criteria criteria = createCriteria();

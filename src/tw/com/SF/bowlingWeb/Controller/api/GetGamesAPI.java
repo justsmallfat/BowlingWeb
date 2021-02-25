@@ -22,7 +22,7 @@ import tw.com.SF.bowlingWeb.util.StringUtils;
 @Controller
 @RequestMapping("/mobile")
 public class GetGamesAPI extends AbstractController{
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Resource private GameService gameService;
 	
 	@RequestMapping("/getGamesByPlayer")

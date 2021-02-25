@@ -19,7 +19,7 @@ import tw.com.SF.bowlingWeb.util.StringUtils;
 
 @Repository
 public class GameDAO extends AbstractDAO<Game> {
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public List<Game> getGamesByPlayer(String playerId, String teamId) throws Exception {		
 		Criteria criteria = createCriteria();

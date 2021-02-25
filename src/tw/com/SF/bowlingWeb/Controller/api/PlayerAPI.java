@@ -23,7 +23,7 @@ import tw.com.SF.bowlingWeb.util.StringUtils;
 @Controller
 @RequestMapping("/mobile")
 public class PlayerAPI extends AbstractController{
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Resource private PlayerService playerService;
 	@Resource private GameService gameService;
 	
@@ -99,6 +99,43 @@ public class PlayerAPI extends AbstractController{
 			jsonMap.put("success", "false");
 			jsonMap.put("errmsg", message);
 			jsonMap.put("player",player);
+			return jsonMap;
+		}
+	}
+	
+
+	@RequestMapping("/getAllPlayersWithSeason")
+	public @ResponseBody Map<String, Object> getAllPlayersWithSeason(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		String message = null;
+		List players =  null;
+		try	{
+			if(		StringUtils.hasText(req.getParameter("teamId"))  &&
+					StringUtils.hasText(req.getParameter("seasonId"))) {
+				String teamId =  req.getParameter("teamId");
+				String seasonId =  req.getParameter("seasonId");
+				players =  playerService.getTeamSeasonPlayers(teamId, (long)Integer.parseInt(seasonId));
+
+				jsonMap.put("success", "true");
+				jsonMap.put("errmsg", message);
+				jsonMap.put("players",players);
+				
+				return jsonMap;
+			}else {
+				message = "資料格式錯誤";
+				jsonMap.put("success", "false");
+				jsonMap.put("errmsg", message);
+				jsonMap.put("player",players);
+				return jsonMap;
+			}
+		}
+		catch(Exception e){
+			logger.error("AuthenticateController Exception", e);
+			e.printStackTrace();
+			message = "未知的錯誤 : \n"+getExceptionMessage(e);
+			jsonMap.put("success", "false");
+			jsonMap.put("errmsg", message);
+			jsonMap.put("player",players);
 			return jsonMap;
 		}
 	}

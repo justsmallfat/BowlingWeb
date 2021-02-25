@@ -23,18 +23,19 @@ import tw.com.SF.bowlingWeb.util.StringUtils;
 @Controller
 @RequestMapping("/mobile")
 public class SetGamesAPI extends AbstractController{
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Resource private GameService gameService;
-	private Game game;
+//	private Game game;
 
     
 	@RequestMapping("/addgame")
 	public @ResponseBody Map<String, Object> list(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		logger.info("APP Login SetPlayerController start()");
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String message = null;
 		List games =  null;
+		Game game = new Game();
 		try	{
 			if(StringUtils.hasText(req.getParameter("playerId")) && 
 					StringUtils.hasText(req.getParameter("score")) && 
@@ -56,7 +57,7 @@ public class SetGamesAPI extends AbstractController{
 				String teamId = req.getParameter("teamId");
 				
 				
-				game = new Game();
+				
 				
 				game.setPlayerId(playerId);				
 				game.setCreatDate(creatDate);
@@ -98,10 +99,11 @@ public class SetGamesAPI extends AbstractController{
 	@RequestMapping("/deleteGame")
 	public @ResponseBody Map<String, Object> Map(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String result = "";
 		String message = null;
 		List games =  null;
+		Game game = new Game();
 		try	{
 			if(StringUtils.hasText(req.getParameter("gameId"))) {
 				

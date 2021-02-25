@@ -22,7 +22,7 @@ import tw.com.SF.bowlingWeb.util.StringUtils;
 @Controller
 @RequestMapping("/mobile")
 public class HistoryAchievementsAPI extends AbstractController{
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Resource private HistoryAchievementsService historyAchievementsService;
 	@Resource private PlayerService playerService;
 	
@@ -31,7 +31,7 @@ public class HistoryAchievementsAPI extends AbstractController{
 	public @ResponseBody Map<String, Object> getAllHistoryAchievements(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		logger.info("APP Login GetPlayerController start()");
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String message = null;
 		List achievements =  null;
 		try	{
@@ -71,7 +71,7 @@ public class HistoryAchievementsAPI extends AbstractController{
 	public @ResponseBody Map<String, Object> getSeasonAchievements(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		logger.info("APP Login GetPlayerController start()");
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String message = null;
 		List achievements =  null;
 		try	{
